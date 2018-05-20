@@ -2,12 +2,12 @@
 using namespace std;
 class Node
 {
-public:
+private:
     string item;
     Node* next;
 
-};
 
+public:
 bool isEmpty(Node* s)
 {
     if(s == NULL)
@@ -16,39 +16,48 @@ bool isEmpty(Node* s)
         return false;
 }
 
-void push(Node* s)
+void push()
 {
     string str;
     cin>>str;
-    if(s->next == NULL){
+    if(next == NULL){
         Node*p = new Node[1];
         p->item = str;
-        s->next = p;
+        next = p;
     }
 
     else
     {
         Node*p = new Node[1];
         p->item = str;
-        p->next = s->next;
-        s->next = NULL;
-        s->next = p;
+        p->next = next;
+        next = NULL;
+        next = p;
     }
 
 }
 
-void pop(Node* s)
+void pop()
 {
-    cout<<s->next->item<<endl;
+    cout<<next->item<<endl;
     Node*p = new Node[1];
-    p = s->next;
-    s->next = s->next->next;
+    p = next;
+    next = next->next;
     delete[] p;
 }
-
+};
 int main()
 {
     Node* p = new Node[50];
+    p->push();
+    p->push();
+    p->push();
+    p->push();
 
-    cout<<sizeof(p);
+    p->pop();
+    p->pop();
+    p->pop();
+    p->push();
+    p->pop();
+    p->pop();
 }
