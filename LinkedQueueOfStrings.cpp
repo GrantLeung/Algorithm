@@ -22,16 +22,16 @@ public:
     }
     LinkedQueueOfStrings()
     {
-        first = new Node[1];
-        last = new Node[1];
+        first = new Node;
+        last = new Node;
         first = NULL;
     }
     void enqueue(char item);
     char dequeue();
     ~LinkedQueueOfStrings()
     {
-        delete[] first;
-        delete[] last;
+        delete first;
+        delete last;
     }
 };
 void LinkedQueueOfStrings::enqueue(char item)
