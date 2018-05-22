@@ -1,12 +1,13 @@
 #include<iostream>
 using namespace std;
-
-class LinkedQueueOfStrings{
 struct Node
 {
     char item;
     Node* next;
+    //int num;
 };
+class LinkedQueueOfStrings{
+
 public :
     Node* first ;
     Node* last ;
@@ -21,38 +22,35 @@ public:
     }
     LinkedQueueOfStrings()
     {
-        first = new Node;
-        last = new Node;
-    }
-    void Init()
-    {
         first = new Node[1];
         last = new Node[1];
+        first = NULL;
     }
     void enqueue(char item);
     char dequeue();
     ~LinkedQueueOfStrings()
     {
-        delete first;
-        delete last;
+        delete[] first;
+        delete[] last;
     }
 };
 void LinkedQueueOfStrings::enqueue(char item)
 {
-    Node* oldlast;
-    oldlast = last;
+    Node* oldlast = last;
+    last = new Node[1];
     last->item = item;
     last->next = NULL;
-    if(first == NULL&&last == NULL) first = last;
-    else
-        oldlast->next = last;
+    if(isEmpty())
+        first = last;
+        else
+            oldlast->next = last;
 }
 
 char LinkedQueueOfStrings::dequeue()
 {
-    char item = first->item;
+    int item = first->item;
     first = first->next;
-    if(first == NULL&&last == NULL)
+    if(isEmpty())
         last = NULL;
     return item;
 }
@@ -60,11 +58,5 @@ char LinkedQueueOfStrings::dequeue()
 int main()
 {
     LinkedQueueOfStrings* q = new LinkedQueueOfStrings[10];
-    q->Init();
-    q->enqueue('A');
-    q->enqueue('C');
-    cout<<q->first->item;
-    cout<<q->last->item;
-    q->enqueue('B');
-    cout<<q->last->item;
+    //q->enqueue('A');
 }
