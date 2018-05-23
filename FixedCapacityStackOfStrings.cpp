@@ -28,7 +28,7 @@ bool Stack::isEmpty()
 
 void Stack::push(char item)
 {
-    cout<<strlen(s);
+    //cout<<strlen(s);
     s[N++] = item;
 }
 
@@ -40,4 +40,9 @@ char Stack::pop()
 int main()
 {
     Stack st(10);
+    st.push('A');
+    st.push('B');
+    st.push('C');
+    cout<<st.pop();
+    cout<<st.pop();
 }
